@@ -10,8 +10,15 @@
 
   <body>
     <%= render 'shared/header' %>
+
     <div class="ui container">
-      <%= yield %>
+      <%= semantic_flash %>
+      <div class="ui page grid main">
+        <div class="row">
+          <%= yield %>
+        </div>
+      </div>
     </div>
+
   </body>
 </html>

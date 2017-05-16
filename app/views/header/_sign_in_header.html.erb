@@ -3,6 +3,23 @@
     <h3>Odin Social</h3>
   <% end %>
 </div>
-<div class="right item">
-  <%= render 'header/sign_in_form' %>
+<div class="right menu">
+  <div class="item">
+    <div>
+      <%= render 'header/sign_in_form' %>
+    </div>
+  </div>
+  <div class="fitted item">
+    <div class="ui vertical divider">OR</div>
+  </div>
+  <div class="item">
+    <div>
+    <%= link_to user_facebook_omniauth_authorize_path do %>
+      <button class="ui mini facebook button">
+        <i class="facebook icon"></i>
+        Facebook
+      </button>
+    <% end %>
+    </div>
+  </div>
 </div>

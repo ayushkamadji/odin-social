@@ -1,13 +1,5 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, omniauth_providers: [:facebook]
-
-  # Relations
-  has_one :profile
-
+  # Class methods
   class << self
     def from_omniauth(auth)
       email = auth.info.email
@@ -26,4 +18,17 @@ class User < ApplicationRecord
       end
     end
   end
+
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable, omniauth_providers: [:facebook]
+
+  # Relations
+  has_one :profile, dependent: :destroy
+    
+    ## Attribute for associations
+    accepts_nested_attributes_for :profile
+
 end

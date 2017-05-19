@@ -1,4 +1,25 @@
-<%= link_to destroy_user_session_path, method: :delete do %>
-  <button class="ui mini button">Sign out</button>
-<% end %>
-user menu
+<div class="ui container">
+
+  <div class="borderless vertically fitted item">
+    <a href="<%= root_path %>">
+      <i class="large circle notched icon"></i>
+    </a>
+  </div>
+
+  <div class="right menu">
+        <div class="ui simple dropdown item">
+          <a href="#">
+            <%= image_tag current_user.profile.avatar_url, 
+              class: "ui mini avatar image" if current_user.profile.avatar_url %>
+            <%= current_user.profile.first_name %>
+            <i class="dropdown icon"></i>
+          </a>
+
+          <div class="menu">
+            <%= link_to "My Account", '#', class: "item" %>
+            <%= link_to "Sign out", destroy_user_session_path, class: "item", method: :delete %>
+          </div>
+
+        </div>
+  </div>
+</div>

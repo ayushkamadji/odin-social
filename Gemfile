@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.0.2'
+gem 'rails', '~> 5.1.0'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
 gem 'figaro', '~> 1.1.1'
 gem 'sass-rails', '~> 5.0'
-gem 'devise', '~> 4.2.1'
+gem 'devise', '~> 4.3.0'
 gem 'omniauth-facebook', '~> 4.0.0'
 gem 'semantic-ui-sass', '~> 2.2.10'
 gem 'uglifier', '>= 1.3.0'

@@ -19,6 +19,7 @@ class User < ApplicationRecord
     end
   end
 
+  # Devise Authentication System
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -27,8 +28,25 @@ class User < ApplicationRecord
 
   # Relations
   has_one :profile, dependent: :destroy
+  has_many :as_first_user_friendships, class_name: 'Friendship', foreign_key: 'first_user_id'
+  has_many :as_second_user_friendships, class_name: 'Friendship', foreign_key: 'second_user_id'
     
     ## Attribute for associations
     accepts_nested_attributes_for :profile
 
+  # Friend relation methods
+  def friendships
+    Friendship.where(id: 
+                       (self.as_first_user_friendships.ids + 
+                        self.as_second_user_friendships.ids)
+                    )
+  end
+
+  def friends
+    User
+      .where(id: self.as_first_user_friendships.select(:second_user_id))
+      .or(
+    User
+      .where(id: self.as_second_user_friendships.select(:first_user_id)))
+  end
 end

@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+20.times do |i|
+  User.create(email: "user-#{i}@example.org", password: "123456", password_confirmation: "123456")
+end
+
+20.times do |i|
+  Friendship.create(first_user_id: 3, second_user_id: User.find_by(email: "user-#{i}@example.org").id)
+end

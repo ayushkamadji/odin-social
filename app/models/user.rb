@@ -30,6 +30,7 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
   has_many :as_first_user_friendships, class_name: 'Friendship', foreign_key: 'first_user_id'
   has_many :as_second_user_friendships, class_name: 'Friendship', foreign_key: 'second_user_id'
+  has_many :posts
     
     ## Attribute for associations
     accepts_nested_attributes_for :profile

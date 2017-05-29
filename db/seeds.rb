@@ -9,6 +9,11 @@
   u = User.create(email: "user-#{i}@example.org", password: "123456", password_confirmation: "123456")
   u.reload
   u.create_profile(first_name: "user-#{i}", last_name: "example", avatar_url: "")
+
+  10.times do |j|
+    u.posts.create(content: "Post##{j}: This is post number #{j} by #{u.profile.first_name}. This is a test post\n
+                  ,so it is supposed to be dull and weird.")
+  end
 end
 
 20.times do |i|

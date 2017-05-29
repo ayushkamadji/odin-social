@@ -6,7 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 20.times do |i|
-  User.create(email: "user-#{i}@example.org", password: "123456", password_confirmation: "123456")
+  u = User.create(email: "user-#{i}@example.org", password: "123456", password_confirmation: "123456")
+  u.reload
+  u.create_profile(first_name: "user-#{i}", last_name: "example", avatar_url: "")
 end
 
 20.times do |i|

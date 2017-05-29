@@ -28,6 +28,15 @@
           <div class="ui segment">
             <p><%= post.content %></p>
           </div>
+          <% unless post.comments.empty? %>
+            <div class="ui segments">
+              <% post.comments.each do |comment| %>
+                <div class="ui segment">
+                  <p><%= comment.content %></p>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>

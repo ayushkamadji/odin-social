@@ -1,29 +1,49 @@
 <div class="ui grid">
   <div class="row">
-    <h2 class="ui header">
-      <%= @user.profile.first_name %>
-      <%= @user.profile.last_name %>
-    </h2>
+    <div class="sixteen wide column">
+      <h2 class="ui header">
+        <%= @user.profile.first_name %>
+        <%= @user.profile.last_name %>
+      </h2>
+    </div>
   </div>
   
   <div class="row">
-    <h3 class="ui header">
-      Friends
-    </h3>
+    <div class="eight wide column">
+      <h3 class="ui header">
+        Posts
+      </h3>
+    </div>
+    <div class="eight wide column">
+      <h3 class="ui header">
+        Friends
+      </h3>
+    </div>
   </div>
   
   <div class="row">
-    <div class="ui middle aligned list">
-      <% @user.friends.each do |friend| %>
-        <div class="item">
-          <img class="ui avatar image" src="<%= friend.profile.avatar_url %>" alt="">
-          <div class="content">
-            <div class="header">
-              <%= link_to "#{friend.profile.first_name} #{friend.profile.last_name}", friend %>
+    <div class="eight wide column">
+      <div class="ui segments">
+        <% @user.posts.each do |post| %>
+          <div class="ui segment">
+            <p><%= post.content %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="eight wide column">
+      <div class="ui middle aligned list">
+        <% @user.friends.each do |friend| %>
+          <div class="item">
+            <img class="ui avatar image" src="<%= friend.profile.avatar_url %>" alt="">
+            <div class="content">
+              <div class="header">
+                <%= link_to "#{friend.profile.first_name} #{friend.profile.last_name}", friend %>
+              </div>
             </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
